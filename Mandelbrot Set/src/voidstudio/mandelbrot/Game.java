@@ -28,8 +28,6 @@ public class Game extends Canvas implements Runnable{
 		
 		menu=new Menu(this,mandelbrot);
 		this.addMouseListener(menu);
-		
-		
 		start();
 	}
 
@@ -66,7 +64,6 @@ public class Game extends Canvas implements Runnable{
 				tick();
 				render();
 			frames++;
-
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 //				System.out.println("FPS: " + frames);
@@ -77,25 +74,20 @@ public class Game extends Canvas implements Runnable{
 	}
 
 	private void tick(){												//Tick Method
-		
 		if(gameState==STATE.Render){
 			mandelbrot.tick();
 		}
 	}
-
 	private void render(){
 		BufferStrategy bs=this.getBufferStrategy();
 		if(bs==null){
 			this.createBufferStrategy(2);
 			return;
 		}
-
 		Graphics g=bs.getDrawGraphics();
-
 		do {
 			try{
 				g=bs.getDrawGraphics();
-
 				g.setColor(Color.black);
 				g.fillRect(0, 0, window.getFrame().getWidth(), window.getFrame().getHeight());
 
